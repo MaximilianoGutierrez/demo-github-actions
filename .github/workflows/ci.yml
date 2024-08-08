@@ -1,0 +1,26 @@
+name: Continous-Integration
+
+# el on seria como el trigger de Azure DevOps
+
+on:
+  push:
+    branches:
+      -master
+
+jobs:
+  build:
+   runs-on: ubuntu-latest
+
+   steps:
+     - name: Bajar Repo
+       uses: actions/checkout@v4.1.7
+
+     - name: Instalar Node.js
+       Uses: actions/setup-node@v4.0.3
+
+     - name: Instalar dependencias
+       run: npm install
+
+     - name: Ejecuta proyecto
+       run: node index.js
+     
